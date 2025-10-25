@@ -10,13 +10,20 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private float angularAcceleration;
     [SerializeField] private float angularHaltingSpeed;
     private float speed;
-    private Rigidbody rb;
     private Vector2 playerInputControls;
 
+    public Transform leftSpawn, rightSpawn;
+    public GameObject canonBallPrefab;
+    public Transform canonBallsTransforms;
+    public float power;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField]private GameObject playerCamera;
+    private Rigidbody rb;
+    
+
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         speed = 0;
         rb = GetComponent<Rigidbody>(); 
     }
@@ -26,6 +33,32 @@ public class PlayerControls : MonoBehaviour
     {
         //Get player controls
         playerInputControls = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            fireCanonBall();
+        }
+    }
+
+    private void fireCanonBall()
+    {
+        //choose which side to fire from
+        Vector3 directionToCamera = (playerCamera.transform.position - transform.position).normalized;
+        Vector3 directionOnPlane = Vector3.ProjectOnPlane(directionToCamera, Vector3.up).normalized;
+        Vector3 facingDirectOnPlane = Vector3.ProjectOnPlane(transform.forward, Vector3.up).normalized;
+        float facingAngle = Mathf.Atan2(facingDirectOnPlane.x, facingDirectOnPlane.z);
+        float cameraAngle = Mathf.Atan2(directionOnPlane.x, directionOnPlane.z);
+        float cameraRelativeToFacingAngle = (facingAngle - cameraAngle)*Mathf.Rad2Deg % 180;
+        Debug.Log(cameraRelativeToFacingAngle);
+        
+        
+        Transform spawnLocation = (cameraRelativeToFacingAngle > 0 )? rightSpawn.transform: leftSpawn.transform;
+
+
+        //create the canonball and shoot it
+        GameObject canonBall = Instantiate(canonBallPrefab, spawnLocation.position, leftSpawn.rotation, canonBallsTransforms);
+        Rigidbody rbCanonBall = canonBall.GetComponent<Rigidbody>();
+        rbCanonBall.AddForce(power * canonBall.transform.forward);
     }
 
     private void FixedUpdate()
