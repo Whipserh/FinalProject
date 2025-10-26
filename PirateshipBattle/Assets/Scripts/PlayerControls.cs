@@ -39,20 +39,21 @@ public class PlayerControls : MonoBehaviour
             fireCanonBall();
         }
     }
-
+    public float getFacingAngle()
+    {
+        Vector3 facingDirectOnPlane = Vector3.ProjectOnPlane(transform.forward, Vector3.up).normalized;
+        return Mathf.Atan2(facingDirectOnPlane.x, facingDirectOnPlane.z) * Mathf.Rad2Deg;
+    }
     private void fireCanonBall()
     {
         //choose which side to fire from
-        Vector3 directionToCamera = (playerCamera.transform.position - transform.position).normalized;
+        Vector3 directionToCamera = (transform.position - playerCamera.transform.position);
         Vector3 directionOnPlane = Vector3.ProjectOnPlane(directionToCamera, Vector3.up).normalized;
-        Vector3 facingDirectOnPlane = Vector3.ProjectOnPlane(transform.forward, Vector3.up).normalized;
-        float facingAngle = Mathf.Atan2(facingDirectOnPlane.x, facingDirectOnPlane.z);
-        float cameraAngle = Mathf.Atan2(directionOnPlane.x, directionOnPlane.z);
-        float cameraRelativeToFacingAngle = (facingAngle - cameraAngle)*Mathf.Rad2Deg % 180;
-        Debug.Log(cameraRelativeToFacingAngle);
         
-        
-        Transform spawnLocation = (cameraRelativeToFacingAngle > 0 )? rightSpawn.transform: leftSpawn.transform;
+        float dotProduct = Vector3.Dot(Vector3.ProjectOnPlane(transform.right, Vector3.up).normalized, directionOnPlane);
+        Debug.Log(dotProduct);
+
+        Transform spawnLocation = (dotProduct > 0 )? rightSpawn.transform: leftSpawn.transform;
 
 
         //create the canonball and shoot it

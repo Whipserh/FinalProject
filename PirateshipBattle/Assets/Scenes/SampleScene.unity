@@ -658,7 +658,7 @@ MonoBehaviour:
   rightSpawn: {fileID: 728136080}
   canonBallPrefab: {fileID: 608050965152957995, guid: 461f31e00b987fc44b66d5bffd016c52, type: 3}
   canonBallsTransforms: {fileID: 829185711}
-  power: 100000
+  power: 200
   playerCamera: {fileID: 760734670}
 --- !u!1 &613827661
 GameObject:
