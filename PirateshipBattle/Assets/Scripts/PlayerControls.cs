@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -16,6 +17,8 @@ public class PlayerControls : MonoBehaviour
     public GameObject canonBallPrefab;
     public Transform canonBallsTransforms;
     public float power;
+    [SerializeField] private float reloadTime = 1;
+    private float lastShotTime = 0;
 
     [SerializeField]private GameObject playerCamera;
     private Rigidbody rb;
@@ -34,10 +37,9 @@ public class PlayerControls : MonoBehaviour
         //Get player controls
         playerInputControls = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+        Debug.Log(Time.time - lastShotTime);
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time - lastShotTime  >= reloadTime)
             fireCanonBall();
-        }
     }
     public float getFacingAngle()
     {
@@ -46,6 +48,9 @@ public class PlayerControls : MonoBehaviour
     }
     private void fireCanonBall()
     {
+        //reset reload timer
+        lastShotTime = Time.time;
+
         //choose which side to fire from
         Vector3 directionToCamera = (transform.position - playerCamera.transform.position);
         Vector3 directionOnPlane = Vector3.ProjectOnPlane(directionToCamera, Vector3.up).normalized;
@@ -57,7 +62,7 @@ public class PlayerControls : MonoBehaviour
 
 
         //create the canonball and shoot it
-        GameObject canonBall = Instantiate(canonBallPrefab, spawnLocation.position, leftSpawn.rotation, canonBallsTransforms);
+        GameObject canonBall = Instantiate(canonBallPrefab, spawnLocation.position, spawnLocation.rotation, canonBallsTransforms);
         Rigidbody rbCanonBall = canonBall.GetComponent<Rigidbody>();
         rbCanonBall.AddForce(power * canonBall.transform.forward);
     }
