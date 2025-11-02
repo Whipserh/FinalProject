@@ -1,5 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement name="Container" style="flex-grow: 1;">
         <ui:VisualElement name="Minimap" style="flex-grow: 1; width: 256px; flex-direction: row; justify-content: flex-end; height: 256px; background-image: url(&quot;project://database/Assets/UI%20Toolkit/PlayerHUD/Textures/MiniMapTexture.asset?fileID=8600000&amp;guid=9a7369b3cb7f8c44b96b0534410ff1a1&amp;type=2#MiniMapTexture&quot;); position: absolute; bottom: 10px; right: 10px; align-items: auto; border-top-left-radius: 287px; border-top-right-radius: 287px; border-bottom-right-radius: 287px; border-bottom-left-radius: 287px; border-top-width: 4px; border-right-width: 4px; border-bottom-width: 4px; border-left-width: 4px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);" />
+        <ui:Slider label="Slider" value="42" high-value="100" fill="true" />
     </ui:VisualElement>
 </ui:UXML>
