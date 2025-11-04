@@ -37,7 +37,7 @@ public class PlayerControls : MonoBehaviour
         //Get player controls
         playerInputControls = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        Debug.Log(Time.time - lastShotTime);
+        //Debug.Log(Time.time - lastShotTime);
         if (Input.GetKeyDown(KeyCode.Space) && Time.time - lastShotTime  >= reloadTime)
             fireCanonBall();
     }
