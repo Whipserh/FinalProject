@@ -1,10 +1,13 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Threading;
+using MyUILibrary;
 using UnityEngine;
-using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 public class PlayerControls : MonoBehaviour
 {
+
+    [SerializeField] private UIDocument playerHud;
+    private RadialProgress reloadBar;
+
     [SerializeField] private float MaxSpeed;
     [SerializeField] private float acceleration;
     [SerializeField] private float deceleration;
@@ -26,7 +29,10 @@ public class PlayerControls : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        reloadBar = playerHud.rootVisualElement.Q("FillBar") as RadialProgress;
+        reloadBar.progress = 0;
+        reloadBar.progress += 30;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         speed = 0;
         rb = GetComponent<Rigidbody>(); 
     }
