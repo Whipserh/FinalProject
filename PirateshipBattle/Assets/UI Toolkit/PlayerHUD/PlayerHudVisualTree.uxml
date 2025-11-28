@@ -1,8 +1,8 @@
 <xsi:UXML xmlns:xsi="UnityEngine.UIElements" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/Scripts/radial-progress/RadialProgress.uss?fileID=7433441132597879392&amp;guid=02d0d3b0b5cf79444bbf4086b4986f6f&amp;type=3#RadialProgress" />
+    <Style src="project://database/Assets/Scripts/radial-progress/RadialProgress.uss?fileID=7433441132597879392&amp;guid=02d0d3b0b5cf79444bbf4086b4986f6f&amp;type=3" />
     <xsi:VisualElement name="Container" style="flex-grow: 1;">
         <xsi:VisualElement name="ReloadBar" style="align-items: center; justify-content: flex-start; align-content: auto; top: 25%; bottom: 25%; left: 25%; right: 25%; position: absolute;">
-            <MyUILibrary.RadialProgress progress="10" name="BarFill" style="width: 500px; height: 500px; justify-content: center; align-items: center; align-self: auto; position: absolute; bottom: 0; top: 0; left: auto; right: auto;" />
+            <MyUILibrary.RadialProgress progress="39.7" name="BarFill" style="width: 500px; height: 500px; justify-content: center; align-items: center; align-self: auto; position: absolute; bottom: 0; top: 0; left: auto; right: auto;" />
         </xsi:VisualElement>
         <xsi:VisualElement name="Minimap" style="flex-grow: 1; width: 256px; flex-direction: row; justify-content: flex-end; height: 256px; background-image: url(&quot;project://database/Assets/UI%20Toolkit/PlayerHUD/Textures/MiniMapTexture.asset?fileID=8600000&amp;guid=9a7369b3cb7f8c44b96b0534410ff1a1&amp;type=2#MiniMapTexture&quot;); position: absolute; bottom: 10px; right: 10px; align-items: auto; border-top-left-radius: 287px; border-top-right-radius: 287px; border-bottom-right-radius: 287px; border-bottom-left-radius: 287px; border-top-width: 4px; border-right-width: 4px; border-bottom-width: 4px; border-left-width: 4px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); top: auto;" />
     </xsi:VisualElement>
