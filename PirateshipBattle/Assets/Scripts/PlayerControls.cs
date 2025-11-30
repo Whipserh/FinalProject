@@ -46,7 +46,7 @@ public class PlayerControls : MonoBehaviour
         Vector3 facingDirectOnPlane = Vector3.ProjectOnPlane(transform.forward, Vector3.up).normalized;
         return Mathf.Atan2(facingDirectOnPlane.x, facingDirectOnPlane.z) * Mathf.Rad2Deg;
     }
-    private void fireCanonBall()
+    public void fireCanonBall()
     {
         //reset reload timer
         lastShotTime = Time.time;

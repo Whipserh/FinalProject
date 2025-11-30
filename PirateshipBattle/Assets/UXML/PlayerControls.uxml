@@ -1,0 +1,59 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/UXML/PlayerControlEditorStyle.uss?fileID=7433441132597879392&amp;guid=6c8e77671db76354a81a348ff292f6f2&amp;type=3#PlayerControlEditorStyle" />
+    <ui:VisualElement style="flex-grow: 1; height: 500px; width: auto;">
+        <ui:VisualElement name="Movement" class="section" style="flex-grow: 1;">
+            <ui:VisualElement name="LinearMovement" style="flex-grow: 1; flex-direction: column; height: 50%;">
+                <ui:Label text="Linear Movement" style="font-size: 20%;" />
+                <ui:VisualElement name="subsection" style="flex-grow: 1; flex-direction: row; height: auto;">
+                    <ui:VisualElement name="Spedometer" class="subsection" style="flex-grow: 1; width: 40%; padding-bottom: 3px;">
+                        <ui:Label text="Label" name="Spedometer" style="height: 80%; font-size: 48%; -unity-text-align: middle-center;" />
+                        <ui:Label text="Speed" style="align-self: center; align-content: flex-end; height: 20%; font-size: 20%; -unity-text-align: upper-center; padding-bottom: 0;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Vars" class="subsection" style="flex-grow: 1; width: 60%; justify-content: center; padding-top: 22px; padding-right: 11px; padding-bottom: 11px; padding-left: 11px; margin-top: 5px;">
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row; height: auto;">
+                            <ui:Label text="Max Speed" />
+                            <uie:PropertyField binding-path="MaxSpeed" name="MaxSpeed" style="width: 60%;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;">
+                            <ui:Label text="Acceleration" />
+                            <uie:PropertyField binding-path="acceleration" name="Acceleration" style="width: 60%;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                            <ui:Label text="Decceleration" />
+                            <uie:PropertyField binding-path="deceleration" name="Deceleration" style="height: auto; width: 60%;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="AngularMovement" class="subsection" style="flex-grow: 1; height: 36px; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;">
+                <ui:Label text="Turning" style="font-size: 15%;" />
+                <uie:PropertyField binding-path="angularAcceleration" name="AngularAcceleration" />
+                <uie:PropertyField binding-path="angularHaltingSpeed" name="AngularHaltingSpeed" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="ShipDetails" style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement name="CanonDetail" class="section" style="flex-grow: 1; width: 50%;">
+                <ui:VisualElement style="flex-grow: 1; height: 20%;">
+                    <ui:Label text="Canon Variables" style="height: auto; font-size: 16px;" />
+                    <uie:PropertyField binding-path="power" name="Power" />
+                </ui:VisualElement>
+                <ui:VisualElement name="AmmoType" class="subsection" style="flex-grow: 1; height: 50%;">
+                    <ui:VisualElement name="AmmoPrefabImage" style="flex-grow: 1; height: 90%;" />
+                    <ui:DropdownField label="Dropdown" style="justify-content: flex-end; height: auto;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="reloading" style="height: 25%;">
+                    <uie:PropertyField binding-path="reloadTime" name="ReloadTime" />
+                    <ui:ProgressBar title="reload Progress" />
+                </ui:VisualElement>
+                <ui:Button text="Fire" emoji-fallback-support="true" name="FireCanonButton" class="button" style="border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; padding-top: 14px; padding-right: 14px; padding-bottom: 14px; padding-left: 14px; margin-top: 3px; margin-right: 3px; margin-bottom: 3px; margin-left: 3px; height: 15%; width: 50%; align-self: center;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ShipObjects" class="section" style="flex-grow: 1; width: 50%;">
+                <ui:VisualElement name="SpawnLocations" style="flex-grow: 1; flex-direction: row; height: 75%; align-items: center; justify-content: center; background-image: url(&quot;project://database/Assets/Editor/Inspector%20UI%20images/ShipUI.png?fileID=2800000&amp;guid=e904bc8373a64324bbf0a76f9f9e2dd6&amp;type=3#ShipUI&quot;); border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;">
+                    <uie:PropertyField name="leftSpawn" binding-path="leftSpawn" style="-unity-text-align: upper-left;" />
+                    <uie:PropertyField name="rightSpawn" binding-path="rightSpawn" style="-unity-text-align: upper-left;" />
+                </ui:VisualElement>
+                <uie:PropertyField name="playerCamera" binding-path="playerCamera" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
